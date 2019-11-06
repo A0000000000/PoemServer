@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/oxm https://www.springframework.org/schema/oxm/spring-oxm.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="attractionAction" class="com.dhrs.web.action.AttractionAction" scope="prototype">
+        <property name="locationService" ref="locationService"></property>
+    </bean>
+    <bean id="favouriteAction" class="com.dhrs.web.action.FavouriteAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+        <property name="favouriteService" ref="favouriteService"></property>
+    </bean>
+    <bean id="poemAction" class="com.dhrs.web.action.PoemAction" scope="prototype">
+        <property name="attractionService" ref="attractionService"></property>
+        <property name="poemService" ref="poemService"></property>
+    </bean>
+    <bean id="userAction" class="com.dhrs.web.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+    <bean id="checkLoginInterceptor" class="com.dhrs.web.interceptor.CheckLoginInterceptor"></bean>
+
+</beans>

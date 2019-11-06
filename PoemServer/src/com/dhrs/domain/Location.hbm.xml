@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dhrs.domain">
+    <class name="Location" table="Location">
+        <id name="locationID" column="LocationID" type="string">
+            <generator class="uuid"/>
+        </id>
+        <property name="locationName" column="LocationName"/>
+        <set name="attractions">
+            <key column="LocationID"></key>
+            <one-to-many class="Attraction"/>
+        </set>
+        <set name="poets">
+            <key column="LocationID"></key>
+            <one-to-many class="Poet"/>
+        </set>
+    </class>
+</hibernate-mapping>

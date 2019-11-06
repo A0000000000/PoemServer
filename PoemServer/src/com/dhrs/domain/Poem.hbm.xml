@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dhrs.domain">
+    <class name="Poem" table="Poem">
+        <id name="poemID" column="PoemID" type="string">
+            <generator class="uuid"/>
+        </id>
+        <property name="poemTitle" column="PoemTitle"/>
+        <property name="poemText" column="PoemText"/>
+        <many-to-one name="poet" class="Poet" column="PoetID"/>
+        <many-to-one name="attraction" class="Attraction" column="AttractionID"/>
+        <set name="favouritePoemInfos">
+            <key column="PoemID"></key>
+            <one-to-many class="FavouritePoemInfo"/>
+        </set>
+    </class>
+</hibernate-mapping>
